@@ -1,0 +1,44 @@
+name: Publish Docker Image to GHCR, and re-deploy to Coolify
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - staging
+      # - feature/devops
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    # if: github.actor == 'onukwilip' || github.actor == 'wificombatacademy'
+    env:
+      IMAGE_LATEST: ghcr.io/${{ secrets.GH_USERNAME }}/wifi-combat-frontend-admin:latest
+      IMAGE_SHA: ghcr.io/${{ secrets.GH_USERNAME }}/wifi-combat-frontend-admin:${{ github.sha }} 
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login Docker
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.GH_USERNAME }}
+          password: ${{ secrets.GH_TOKEN }}
+
+      # Step 4: Build the Docker image and push to GHCR
+      - name: Build, tag, and push docker image to GitHub Container Registry
+        run: |
+          docker build \
+            -t ${{ env.IMAGE_LATEST }} \
+            -t ${{ env.IMAGE_SHA }} .
+
+          docker push ${{ env.IMAGE_LATEST }}
+          docker push ${{ env.IMAGE_SHA }}
+
+       # Step 6: Re-deploy the app container to Coolify
+      - name: Trigger Coolify re-deployment
+        if: github.ref == 'refs/heads/main'
+        run: |
+          curl --request GET "${{ secrets.COOLIFY_WEBHOOK_URL }}" --header "Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}"
