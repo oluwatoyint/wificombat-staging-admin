@@ -31,7 +31,7 @@ const Login = () => {
             }
             // Making the POST request using the helper function
             setIsLoading(true)
-            const response = await post('/login', {email, password});
+            const response = await post('/admin-login', {email, password});
             console.log(response);
             if(response.success) {
                 Cookies.set('token', response.data.token);
