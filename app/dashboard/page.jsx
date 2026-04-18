@@ -13,14 +13,14 @@ const Dashboard = () => {
   // const [data, setData] = useState(null)
   const token = Cookies.get('token')
   const { data, error, loading, refetch } = useFetch(
-    "https://backend.wificombatelearn.com/administration/dashboard/stats",
+    "https://wificombat-staging-backend-production.up.railway.app/administration/dashboard/stats",
     { cacheTime: 5 * 60 * 1000 } // 5 minutes cache
   )
 
   
 
   async function fetchDashboardActivities() {
-    const response = await fetch("https://backend.wificombatelearn.com/recent-activities", {
+    const response = await fetch("https://wificombat-staging-backend-production.up.railway.app/recent-activities", {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ const Dashboard = () => {
   }
 
   // async function fetchDashboardStats() {
-  //   const response = await fetch("https://backend.wificombatelearn.com/administration/dashboard/stats", {
+  //   const response = await fetch("https://wificombat-staging-backend-production.up.railway.app/administration/dashboard/stats", {
   //     headers: {
   //       'Authorization': `Bearer ${token}`,
   //       'Content-Type': 'application/json',

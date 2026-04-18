@@ -130,7 +130,7 @@ const Profile = () => {
       formData.append("media", profilePicFile); // Add the file to the form data
       formData.append("media_type", "photo"); // Add the file to the form data
 
-      const response = await axios.post("https://backend.wificombatelearn.com/media/upload", formData, {
+      const response = await axios.post("https://wificombat-staging-backend-production.up.railway.app/media/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

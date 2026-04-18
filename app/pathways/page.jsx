@@ -21,7 +21,7 @@ import { PiPathDuotone } from 'react-icons/pi';
 const Pathways = () => {
 
     const { data, error, loading, refetch } = useFetch(
-        "https://backend.wificombatelearn.com/course-pathways/",
+        "https://wificombat-staging-backend-production.up.railway.app/course-pathways/",
         { cacheTime: 5 * 60 * 1000 } // 5 minutes cache
       )
     

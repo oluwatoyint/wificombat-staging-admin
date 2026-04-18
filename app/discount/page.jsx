@@ -21,7 +21,7 @@ const Discount = () => {
   const [load, setLoad] = useState(false)
   const [discoutCodes, setDiscountCodes] = useState()
 //   const { data, error, loading, refetch } = useFetch(
-//     "https://backend.wificombatelearn.com/administration/discount-codes/",
+//     "https://wificombat-staging-backend-production.up.railway.app/administration/discount-codes/",
 //     { cacheTime: 5 * 60 * 1000 } // 5 minutes cache
 //   )
 
@@ -50,7 +50,7 @@ const Discount = () => {
 
   async function deleteDiscount(id){
     setLoad(true)
-    const response = await fetch(`https://backend.wificombatelearn.com/administration/discount-codes/${id}/`, {
+    const response = await fetch(`https://wificombat-staging-backend-production.up.railway.app/administration/discount-codes/${id}/`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`,

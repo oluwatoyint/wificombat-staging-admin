@@ -20,7 +20,7 @@ const SchoolInfo = () => {
         const { id } = useParams();
 
         const { data, error, loading, refetch } = useFetch(
-            `https://backend.wificombatelearn.com/administration/get-users?school_id=${id}`,
+            `https://wificombat-staging-backend-production.up.railway.app/administration/get-users?school_id=${id}`,
             { cacheTime: 5 * 60 * 1000 } // 5 minutes cache
         )
 

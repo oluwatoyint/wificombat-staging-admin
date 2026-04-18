@@ -134,7 +134,7 @@ const Question = () => {
         try {
             setLoading(true)
             const response = await post('/assessement/determine-career-interest/bulk_create/', formattedQuestions)
-            // const response = await fetch('https://backend.wificombatelearn.com/assessement/determine-career-interest/bulk_create/', {
+            // const response = await fetch('https://wificombat-staging-backend-production.up.railway.app/assessement/determine-career-interest/bulk_create/', {
             //     method: 'POST',
             //     headers: {
             //         'Content-Type': 'application/json',

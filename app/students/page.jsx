@@ -19,7 +19,7 @@ import * as XLSX from 'xlsx'
 
 const Students = () => {
   const { data, error, loading, refetch } = useFetch(
-    "https://backend.wificombatelearn.com/administration/get-users?role=user",
+    "https://wificombat-staging-backend-production.up.railway.app/administration/get-users?role=user",
     { cacheTime: 5 * 60 * 1000 } // 5 minutes cache
   )
 

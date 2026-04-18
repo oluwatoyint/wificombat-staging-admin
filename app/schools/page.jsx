@@ -17,7 +17,7 @@ import BtnLoader from '../components/btnLoader/BtnLoader';
 
 const Schools = () => {
     const { data, error, loading, refetch } = useFetch(
-            "https://backend.wificombatelearn.com/administration/get-users?role=school_admin",
+            "https://wificombat-staging-backend-production.up.railway.app/administration/get-users?role=school_admin",
             { cacheTime: 5 * 60 * 1000 } // 5 minutes cache
         )
 
